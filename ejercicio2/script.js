@@ -93,3 +93,26 @@ let json = {
                 ] 
             }
         }
+
+let result = {...json.data};
+Object.keys(result).forEach(element => {
+    result[element].sort((a, b) => {
+        return b.limit - a.limit ;
+    });
+
+    result[element] = result[element].filter((service, index) => {
+        return index === 0;
+    })[0];
+
+    result[element]['over'] = values[result[element]['over_carrier_service_id']];
+    result[element]['under'] = values[result[element]['under_carrier_service_id']];
+    console.log(result[element]['over'])
+    console.log(result[element]['under'])
+    console.log(Object.keys(values).find(val => val == result[element]['over_carrier_service_id']));
+
+    console.log(result[element]);
+});
+console.log(result);
+
+
+document.getElementById("result").innerHTML = JSON.stringify(result, null, 4);
