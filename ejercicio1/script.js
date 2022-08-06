@@ -35,5 +35,6 @@ function isPrime(number) {
 /*Función para renderizar los números primos dentro del div #container-primes*/
 function renderPrimesHtml(arrayPrimeNumbers) {
     const divContainer = document.querySelector('#container-primes');
+    divContainer.empty();
     arrayPrimeNumbers.forEach(prime => divContainer.append(prime+" . "));
 }
